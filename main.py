@@ -38,6 +38,7 @@ def printDefinition(definition):
 #Main code
 print("Welcome to the Dictionary!")
 userInput2 = "y"
+#Reassert prompt if user wants to continue using the dictionary
 while (userInput2.lower() == "y" or userInput2.lower() == "yes"):
     userInput = input("Please enter a word you'd like to look up: ")
     printDefinition(translate(userInput))
