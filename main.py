@@ -1,8 +1,10 @@
 import json
 from difflib import get_close_matches
 
+#open Json File to capture data
 data = json.load(open("data.json"))
 
+#this is the translate function
 def translate(word):
     word = word.lower()
     if word in data:
@@ -14,7 +16,7 @@ def translate(word):
         print("I think you meant: " + word.upper())
         return data[word.upper()]
     else:
-        #check for close words
+        #check for close words - put max tries at 3
         possibleWords = get_close_matches(word, data.keys(), 3)
         if (len(possibleWords) == 0):
             return "Word doesn't exist."
@@ -24,6 +26,7 @@ def translate(word):
                 return data[w]
         return "Sorry, I can't find your word."
 
+#print the definition returned by translate
 def printDefinition(definition):
     if (type(definition) == list):
         for line in definition:
@@ -32,6 +35,7 @@ def printDefinition(definition):
         print(definition)
 
 
+#Main code
 print("Welcome to the Dictionary!")
 userInput2 = "y"
 while (userInput2.lower() == "y" or userInput2.lower() == "yes"):
